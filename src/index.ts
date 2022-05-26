@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
+import {useCallback, useEffect, useReducer, useRef, useState} from "react";
 
 export type StateReducer<S, A, E> = (state: S, action: A) => [S, E[]];
 
@@ -8,7 +8,7 @@ export type EffectCleanup = () => void;
 export function useBireducer<S, A, E>(
   stateReducer: StateReducer<S, A, E>,
   effectReducer: EffectReducer<E>,
-  defaultState: S
+  defaultState: S,
 ) {
   const [effects, setEffects] = useState<E[]>([]);
   const cleanups = useRef<EffectCleanup[]>([]);
@@ -19,7 +19,7 @@ export function useBireducer<S, A, E>(
       setEffects(effects => [...nextEffects.reverse(), ...effects]);
       return nextState;
     },
-    [stateReducer]
+    [stateReducer],
   );
 
   useEffect(() => {

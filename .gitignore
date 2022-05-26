@@ -1,7 +1,10 @@
 *.log
 .DS_Store
 .envrc
+.eslintcache
+
 node_modules/
 dist/
+coverage/
 .cache/
 .direnv/
