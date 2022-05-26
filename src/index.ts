@@ -41,3 +41,5 @@ export function useBireducer<S, A, E>(
 
   return useReducer(reducer, defaultState);
 }
+
+export default {useBireducer};
