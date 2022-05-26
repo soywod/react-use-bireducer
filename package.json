@@ -2,19 +2,16 @@
   "name": "react-use-bireducer",
   "author": "soywod <clement.douin@posteo.net>",
   "description": "React hook for managing effects within reducers.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
-  "source": "src/index.ts",
-  "exports": {
-    "require": "dist/index.cjs",
-    "default": "dist/index.modern.js"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "unpkg": "dist/index.umd.js",
-  "typings": "dist/index.d.ts",
+  "source": "./src/index.ts",
+  "exports": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.umd.js",
+  "typings": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "./dist"
   ],
   "devDependencies": {
     "@jest/types": "^28.1.0",
@@ -34,6 +31,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
+    "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "lint-staged": ">=10",
     "microbundle": "^0.15.0",
@@ -57,8 +55,5 @@
     "build": "microbundle",
     "test": "yarn jest",
     "lint": "yarn eslint --ext ts src"
-  },
-  "dependencies": {
-    "jest": "^28.1.0"
   }
 }

@@ -5,7 +5,7 @@ const config = {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   bracketSpacing: false,
-  printWidth: 120,
+  printWidth: 100,
   semi: true,
   singleQuote: false,
   trailingComma: "all",

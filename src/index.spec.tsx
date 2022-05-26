@@ -8,17 +8,26 @@ type State = {
   count: number;
 };
 
-type Action = {type: "increment"; value: number} | {type: "decrement"; value: number} | {type: "reset"};
+type Action =
+  | {type: "increment"; value: number}
+  | {type: "decrement"; value: number}
+  | {type: "reset"};
 
 type Effect = {type: "log"; value: string} | {type: "backup"; count: number};
 
 const stateReducer: StateReducer<State, Action, Effect> = (state, action) => {
   switch (action.type) {
     case "increment": {
-      return [{count: state.count + action.value}, [{type: "log", value: `increment counter +${action.value}`}]];
+      return [
+        {count: state.count + action.value},
+        [{type: "log", value: `increment counter +${action.value}`}],
+      ];
     }
     case "decrement": {
-      return [{count: state.count - action.value}, [{type: "log", value: `decrement counter -${action.value}`}]];
+      return [
+        {count: state.count - action.value},
+        [{type: "log", value: `decrement counter -${action.value}`}],
+      ];
     }
     case "reset": {
       return [
