@@ -1,10 +1,12 @@
-name: integration
+name: delivery
 
 on:
   push:
+    tags:
+    - v*
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
@@ -21,3 +23,7 @@ jobs:
       run: yarn test --ci
     - name: Build
       run: yarn build
+    - name: Publish
+      run: yarn publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
