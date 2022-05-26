@@ -1,6 +1,33 @@
 # 🔀 React use bireducer [![tests](https://img.shields.io/github/workflow/status/soywod/react-use-bireducer/integration?label=tests&logo=github&style=flat-square)](https://github.com/soywod/react-use-bireducer/actions/workflows/test.yaml) [![codecov](https://img.shields.io/codecov/c/github/soywod/react-use-bireducer?logo=codecov&style=flat-square)](https://app.codecov.io/gh/soywod/react-use-bireducer) [![npm](https://img.shields.io/npm/v/react-use-bireducer?logo=npm&label=npm&color=success&style=flat-square)](https://www.npmjs.com/package/react-use-bireducer)
 
-React hook for managing effects from reducers.
+React hook for managing effectful reducers.
+
+## Motivation
+
+When your application gets bigger, it is hard to manage both state
+changes and effectful computations. I find the Model-View-Update
+pattern (which the [Elm
+architecture](https://guide.elm-lang.org/architecture/) is based on)
+really effective for this kind of task. `useBireducer` implements this
+pattern by combining two reducers (hence the name): a state reducer
+and an effect reducer.
+
+The state reducer is really close to `useReducer`, except that it
+returns the new state AND the effects to execute:
+
+```typescript
+type StateReducer<S, A, E> = (state: S, action: A) => [S, Array<E>];
+```
+
+The effect reducer just executes effects and can return a cleanup
+function. This cleanup function is called when the component unmounts:
+
+```typescript
+type EffectReducer<E> = (effect: E) => void | (() => void);
+```
+
+This pattern helps you to separate state changes from effectful
+computations. It also makes your tests stronger.
 
 ## Installation
 
@@ -12,22 +39,18 @@ npm install react-use-bireducer
 
 ## Usage
 
-The API is very close to `useReducer`, except that:
-
-- The state reducer returns `[State, Effect[]]` instead of `State`
-- You need to pass an effect reducer
-
 ```typescript
 import {useBireducer} from "react-use-bireducer";
-
-declare function stateReducer(state: State, action: Action): [State, Effect[]];
-declare function effectReducer(effect: Effect): EffectCleanup | void;
 
 const [state, dispatch] = useBireducer(stateReducer, effectReducer, defaultState);
 ```
 
 See a complete example on
 [CodeSandbox](https://codesandbox.io/s/react-use-bireducer-example-20n30w?file=/src/App.tsx).
+
+If you want to see an example in a real world application, have a look
+at
+[react-pin-field](https://github.com/soywod/react-pin-field/blob/49418994ae39c3aac67d2b4f94082a20effcea4b/lib/src/pin-field/pin-field.tsx#L251).
 
 ## Development
 
