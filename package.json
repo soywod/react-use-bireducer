@@ -8,12 +8,10 @@
   "typings": "dist/index.d.ts",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
-  "exports": "dist/index.modern.js",
   "files": [
     "dist/index.d.ts",
     "dist/index.umd.js",
-    "dist/index.esm.js",
-    "dist/index.modern.js"
+    "dist/index.esm.js"
   ],
   "devDependencies": {
     "@jest/types": "^28.1.0",
@@ -54,7 +52,7 @@
   "scripts": {
     "prepare": "husky install",
     "start": "microbundle watch",
-    "build": "microbundle",
+    "build": "microbundle --no-sourcemap -f esm,umd",
     "test": "yarn jest",
     "lint": "yarn eslint --ext ts src"
   }
