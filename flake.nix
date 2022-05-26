@@ -1,5 +1,5 @@
 {
-  description = "React hook for managing reducers and effects together.";
+  description = "React hook for managing effects within reducers.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
