@@ -1,6 +1,6 @@
 # 🔀 React use bireducer [![tests](https://img.shields.io/github/workflow/status/soywod/react-use-bireducer/integration?label=tests&logo=github&style=flat-square)](https://github.com/soywod/react-use-bireducer/actions/workflows/test.yaml) [![codecov](https://img.shields.io/codecov/c/github/soywod/react-use-bireducer?logo=codecov&style=flat-square)](https://app.codecov.io/gh/soywod/react-use-bireducer) [![npm](https://img.shields.io/npm/v/react-use-bireducer?logo=npm&label=npm&color=success&style=flat-square)](https://www.npmjs.com/package/react-use-bireducer)
 
-React hook for managing effects within reducers.
+React hook for managing effects from reducers.
 
 ## Installation
 
@@ -26,8 +26,8 @@ declare function effectReducer(effect: Effect): EffectCleanup | void;
 const [state, dispatch] = useBireducer(stateReducer, effectReducer, defaultState);
 ```
 
-See a complete [live example on
-CodeSandbox](https://codesandbox.io/s/react-use-bireducer-example-20n30w?file=/src/App.tsx).
+See a complete example on
+[CodeSandbox](https://codesandbox.io/s/react-use-bireducer-example-20n30w?file=/src/App.tsx).
 
 ## Development
 
