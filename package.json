@@ -2,19 +2,18 @@
   "name": "react-use-bireducer",
   "author": "soywod <clement.douin@posteo.net>",
   "description": "React hook for managing effects from reducers.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "source": "src/index.ts",
-  "exports": {
-    "require": "dist/index.cjs",
-    "default": "dist/index.modern.js"
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.module.js",
-  "unpkg": "dist/index.umd.js",
   "typings": "dist/index.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "exports": "dist/index.modern.js",
   "files": [
-    "dist"
+    "dist/index.d.ts",
+    "dist/index.umd.js",
+    "dist/index.esm.js",
+    "dist/index.modern.js"
   ],
   "devDependencies": {
     "@jest/types": "^28.1.0",
