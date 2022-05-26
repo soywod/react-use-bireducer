@@ -5,9 +5,12 @@
   "version": "1.0.2",
   "license": "MIT",
   "source": "src/index.ts",
-  "exports": "dist/index.mjs",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "exports": {
+    "require": "dist/index.cjs",
+    "default": "dist/index.modern.js"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "typings": "dist/index.d.ts",
   "files": [
