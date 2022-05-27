@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Removed unnecessary Nix deps
+
+### Fixed
+
+- Fixed invalid React peer deps versions
+
 ## [1.1.0] - 2022-05-27
 
 ### Added
@@ -20,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2022-05-26
 
-### Fix
+### Fixed
 
 - Export only UMD and ESM formats.
 
