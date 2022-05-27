@@ -8,18 +8,18 @@ When your application gets bigger, it is hard to manage both state
 changes and effectful computations. I find the Model-View-Update
 pattern (which the [Elm
 architecture](https://guide.elm-lang.org/architecture/) is based on)
-really effective for this kind of task. `useBireducer` implements this
-pattern by combining two reducers (hence the name): a state reducer
-and an effect reducer.
+really efficient for this kind of task. `useBireducer` takes
+inspiration from this pattern and proposes a solution based on two
+reducers (hence the name): a state reducer and an effect reducer.
 
 The state reducer is really close to `useReducer`, except that it
-returns the new state AND the effects to execute:
+returns the new state AND the effects to schedule:
 
 ```typescript
 type StateReducer<S, A, E> = (state: S, action: A) => [S, Array<E>];
 ```
 
-The effect reducer just executes effects and can return a cleanup
+The effect reducer executes effects and can return a cleanup
 function. This cleanup function is called when the component unmounts:
 
 ```typescript
@@ -42,7 +42,11 @@ npm install react-use-bireducer
 ```typescript
 import {useBireducer} from "react-use-bireducer";
 
-const [state, dispatch] = useBireducer(stateReducer, effectReducer, defaultState);
+const [state, dispatch] = useBireducer(
+  stateReducer,
+  effectReducer,
+  defaultState,
+);
 ```
 
 See a complete example on
@@ -50,7 +54,7 @@ See a complete example on
 
 If you want to see an example in a real world application, have a look
 at
-[react-pin-field](https://github.com/soywod/react-pin-field/blob/49418994ae39c3aac67d2b4f94082a20effcea4b/lib/src/pin-field/pin-field.tsx#L251).
+[react-pin-field](https://github.com/soywod/react-pin-field/blob/88d4505a8b7b945163a74d5aa493324cd90f7fb2/lib/src/pin-field/pin-field.tsx#L251).
 
 ## Development
 
