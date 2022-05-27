@@ -2,7 +2,7 @@
   "name": "react-use-bireducer",
   "author": "soywod <clement.douin@posteo.net>",
   "description": "React hook for managing effectful reducers.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "source": "src/index.ts",
   "typings": "dist/index.d.ts",

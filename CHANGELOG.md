@@ -7,13 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2022-05-27
+
 ### Removed
 
-- Removed unnecessary Nix deps
+- Unnecessary Nix deps.
 
 ### Fixed
 
-- Fixed invalid React peer deps versions
+- Invalid React peer deps versions.
 
 ## [1.1.0] - 2022-05-27
 
@@ -28,29 +30,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.5] - 2022-05-26
 
-### Fixed
+### Changed
 
 - Export only UMD and ESM formats.
 
 ## [1.0.4] - 2022-05-26
 
-### Fix
+### Fixed
 
-- Fix modern js export.
+- Modern js export.
 
 ## [1.0.3] - 2022-05-26
 
-### Fix
+### Fixed
 
-- Fix Microbundle export names.
+- Microbundle export names.
 
 ## [1.0.2] - 2022-05-26
 
+### Added
+
+- Default export.
+
 ## [1.0.1] - 2022-05-26
+
+### Added
+
+- Readme.
+
+### Fixed
+
+- Microbundle exports.
 
 ## [1.0.0] - 2022-05-26
 
-[unreleased]: https://github.com/soywod/react-use-bireducer/compare/v1.1.0...HEAD
+### Added
+
+- [TypeScript](https://www.typescriptlang.org/) and [Microbundle](https://github.com/developit/microbundle).
+
+[unreleased]: https://github.com/soywod/react-use-bireducer/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/soywod/react-use-bireducer/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/soywod/react-use-bireducer/compare/v1.0.5...v1.1.0
 [1.0.5]: https://github.com/soywod/react-use-bireducer/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/soywod/react-use-bireducer/compare/v1.0.3...v1.0.4
