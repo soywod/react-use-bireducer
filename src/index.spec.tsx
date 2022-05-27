@@ -8,30 +8,18 @@ type State = {
   count: number;
 };
 
-type Action =
-  | {type: "increment"; value: number}
-  | {type: "decrement"; value: number}
-  | {type: "reset"};
+type Action = {type: "update"; value: number} | {type: "reset"};
 
 type Effect = {type: "log"; value: string} | {type: "backup"; count: number};
 
 const stateReducer: StateReducer<State, Action, Effect> = (state, action) => {
   switch (action.type) {
-    case "increment": {
-      return [
-        {count: state.count + action.value},
-        [{type: "log", value: `increment counter +${action.value}`}],
-      ];
-    }
-    case "decrement": {
-      return [
-        {count: state.count - action.value},
-        [{type: "log", value: `decrement counter -${action.value}`}],
-      ];
+    case "update": {
+      return [{count: action.value}, [{type: "log", value: `set counter ${action.value}`}]];
     }
     case "reset": {
       return [
-        {count: 0},
+        state,
         [
           {type: "log", value: "reset counter"},
           {type: "backup", count: state.count},
@@ -41,7 +29,7 @@ const stateReducer: StateReducer<State, Action, Effect> = (state, action) => {
   }
 };
 
-const effectReducer: EffectReducer<Effect> = effect => {
+const effectReducer: EffectReducer<Effect, Action> = (effect, dispatch) => {
   switch (effect.type) {
     case "log": {
       console.log(effect.value);
@@ -49,6 +37,7 @@ const effectReducer: EffectReducer<Effect> = effect => {
     }
     case "backup": {
       localStorage.setItem("backup", String(effect.count));
+      dispatch({type: "update", value: 0});
       return () => {
         localStorage.clear();
       };
@@ -80,9 +69,21 @@ describe("useBireducer", () => {
       return (
         <>
           <span data-testid="counter">{state.count}</span>
-          <button data-testid="decrement" onClick={() => dispatch({type: "decrement", value: 1})} />
-          <button data-testid="increment" onClick={() => dispatch({type: "increment", value: 1})} />
-          <button data-testid="reset" onClick={() => dispatch({type: "reset"})} />
+          <button
+            data-testid="decrement"
+            onClick={() => dispatch({type: "update", value: state.count - 1})}
+          >
+            decrement
+          </button>
+          <button
+            data-testid="increment"
+            onClick={() => dispatch({type: "update", value: state.count + 1})}
+          >
+            increment
+          </button>
+          <button data-testid="reset" onClick={() => dispatch({type: "reset"})}>
+            reset
+          </button>
         </>
       );
     }
@@ -93,15 +94,17 @@ describe("useBireducer", () => {
     fireEvent.click(screen.getByTestId("increment"));
     fireEvent.click(screen.getByTestId("increment"));
     expect(screen.getByTestId("counter")).toHaveTextContent("2");
-    expect(console.log).toHaveBeenNthCalledWith(2, "increment counter +1");
+    expect(console.log).toHaveBeenNthCalledWith(1, "set counter 1");
+    expect(console.log).toHaveBeenNthCalledWith(2, "set counter 2");
 
     fireEvent.click(screen.getByTestId("decrement"));
     expect(screen.getByTestId("counter")).toHaveTextContent("1");
-    expect(console.log).toHaveBeenLastCalledWith("decrement counter -1");
+    expect(console.log).toHaveBeenNthCalledWith(3, "set counter 1");
 
     fireEvent.click(screen.getByTestId("reset"));
     expect(screen.getByTestId("counter")).toHaveTextContent("0");
-    expect(console.log).toHaveBeenLastCalledWith("reset counter");
+    expect(console.log).toHaveBeenNthCalledWith(4, "reset counter");
+    expect(console.log).toHaveBeenNthCalledWith(5, "set counter 0");
     expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "backup", "1");
     expect(localStorage.clear).not.toHaveBeenCalled();
 

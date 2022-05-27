@@ -23,7 +23,7 @@ The effect reducer just executes effects and can return a cleanup
 function. This cleanup function is called when the component unmounts:
 
 ```typescript
-type EffectReducer<E> = (effect: E) => void | (() => void);
+type EffectReducer<E, A> = (effect: E, dispatch: React.Dispatch<A>) => void | (() => void);
 ```
 
 This pattern helps you to separate state changes from effectful
@@ -90,6 +90,14 @@ Library](https://testing-library.com/docs/react-testing-library/intro/)
 ```bash
 yarn test
 ```
+
+## Similar projects
+
+- [`useEffectReducer`](https://github.com/davidkpiano/useEffectReducer):
+  the state reducer exposes a third argument called `exec` to schedule
+  effects
+- [`useElmish`](https://github.com/ncthbrt/react-use-elmish): it is a
+  mix between `useEffectReducer` and `useBireducer`
 
 ## Sponsoring
 
