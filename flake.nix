@@ -1,5 +1,5 @@
 {
-  description = "React hook for managing effects from reducers.";
+  description = "React hook for managing effectful reducers.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
@@ -19,10 +19,6 @@
         {
           devShell = pkgs.mkShell {
             buildInputs = with pkgs; [
-              # Common tools
-              coreutils
-              ripgrep
-
               # Nix LSP + formatter
               rnix-lsp
               nixpkgs-fmt
