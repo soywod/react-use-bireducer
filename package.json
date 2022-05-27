@@ -1,7 +1,7 @@
 {
   "name": "react-use-bireducer",
   "author": "soywod <clement.douin@posteo.net>",
-  "description": "React hook for managing effects from reducers.",
+  "description": "React hook for managing effectful reducers.",
   "version": "1.1.0",
   "license": "MIT",
   "source": "src/index.ts",
@@ -46,8 +46,8 @@
     "typescript-language-server": "^0.10.1"
   },
   "peerDependencies": {
-    "react": ">=16.8",
-    "react-dom": ">=16.8"
+    "react": "^16.8 || ^17 || ^18",
+    "react-dom": "^16.8 || ^17 || ^18"
   },
   "scripts": {
     "prepare": "husky install",
