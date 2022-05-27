@@ -91,6 +91,14 @@ Library](https://testing-library.com/docs/react-testing-library/intro/)
 yarn test
 ```
 
+## Similar projects
+
+- [`useEffectReducer`](https://github.com/davidkpiano/useEffectReducer):
+  the state reducer exposes a third argument called `exec` to schedule
+  effects
+- [`useElmish`](https://github.com/ncthbrt/react-use-elmish): it is a
+  mix between `useEffectReducer` and `useBireducer`
+
 ## Sponsoring
 
 [![github](https://img.shields.io/badge/-GitHub%20Sponsors-fafbfc?logo=GitHub%20Sponsors&style=flat-square)](https://github.com/sponsors/soywod)
