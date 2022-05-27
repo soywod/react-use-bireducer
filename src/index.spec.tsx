@@ -41,7 +41,7 @@ const stateReducer: StateReducer<State, Action, Effect> = (state, action) => {
   }
 };
 
-const effectReducer: EffectReducer<Effect> = effect => {
+const effectReducer: EffectReducer<Effect, Action> = effect => {
   switch (effect.type) {
     case "log": {
       console.log(effect.value);

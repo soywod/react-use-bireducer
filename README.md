@@ -23,7 +23,7 @@ The effect reducer just executes effects and can return a cleanup
 function. This cleanup function is called when the component unmounts:
 
 ```typescript
-type EffectReducer<E> = (effect: E) => void | (() => void);
+type EffectReducer<E, A> = (effect: E, dispatch: React.Dispatch<A>) => void | (() => void);
 ```
 
 This pattern helps you to separate state changes from effectful
